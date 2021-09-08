@@ -7,3 +7,4 @@
 ## testing jenkins ec2 deployment job
 ## testing jenkins ec2 deployment job fix
 ## starting jenkins ec2
+## testing jenkins without kill line
