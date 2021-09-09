@@ -41,7 +41,7 @@ Step 4) Click `Apply`, then `Save` -> We will come back to `Post-build Actions` 
 ## Configuration for CDE Job
 - This job will deploy the newly-merged code into the EC2 instances  
 Step 1) Make another job for `Taking the code from the GitHub repo and deploys it in an EC2 instance`  
-Step 2) Repeat steps 1, 2, 3, and 5 from `Configuration For CI job`; don't do Step 4, 7, 8 or 9 
+Step 2) Repeat steps 1, 2, 3, and 5 from `Configuration For CI job`; don't do Step 4, 7, 8 or 9  
 Step 3) In `Branch Specifier`, enter `*/main`  
 Step 4) In `Build Environment`, tick `SSH Agent`, and fill in the details for the key required to log in to the EC2 instances (e.g. from `sre_key.pem` file)  
 Step 5) In `Build`, add `Execute shell`, and paste in the following - REDO THE EC2 IDS AND IP ADDRESSES  
@@ -69,18 +69,16 @@ node seeds/seed.js
 nohup node app.js > /dev/null 2>&1 &
 EOF
 ```  
-Step 6) Click `Apply`, then `Save`
-
+Step 6) Click `Apply`, then `Save`  
 ### Connecting The CI, CD, and CDE Jobs
 Step 1) In your first job, click `Configure`, then `Add post-build action` -> `Build other projects`  
 Step 2) Enter the name of the second job we created, and select `Trigger only if build is stable`  
 Step 3) In your second job, click `Configure`, then `Add post-build action` -> `Build other projects`  
 Step 4) Enter the name of the third job we created, and select `Trigger only if build is stable`  
-
 ### GitHub Webhook
-Step 1) In your GitHub repo, click `Settings` -> `Webhooks` -> `Create webhook`, and type in your password if prompted
+Step 1) In your GitHub repo, click `Settings` -> `Webhooks` -> `Create webhook`, and type in your password if prompted  
 Step 2) `Payload URL`: `http://18.170.212.241:8080/github-webhook/` - REPLACE `18.170.212.241` WITH THE CURRENT JENKINS IP  
-Step 3) Click `Send me everything`
-Step 4) Click `Add webhook`
+Step 3) Click `Send me everything`  
+Step 4) Click `Add webhook`  
 
 Now make a new dev branch in your local repo, make a change, and push it -> then give Jenkins some time, before navigating to the IP address for the app EC2 instance, then IP/posts. Both should appear.
