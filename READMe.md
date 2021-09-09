@@ -11,7 +11,7 @@
 - Give the item a name, then click `Freestyle project`
 - Click `OK`
 ### Configuration For CI job
-- This job will run the automated tests on the new code
+- This job will run the automated tests on the new code  
 Step 1) Give the job an accurate description (e.g. `Building a CI job with GitHub and localhost`)  
 Step 2) Click `Discard old builds` and set `Max # of builds` to `3`  
 Step 3) Click `GitHub project` and put in the https clone link for your repo  
@@ -33,13 +33,13 @@ npm test
 ```  
 Step 11) Click `Apply`, then `Save` -> We will come back to `Post-build Actions` later  
 ### Configuration for CD Job
-- This job will merge the newly-tested code with the main branch if the tests were successful
+- This job will merge the newly-tested code with the main branch if the tests were successful  
 Step 1) Make another job for `Merging the dev branch with main after successfully passing tests`  
 Step 2) Repeat steps 1, 2, 3, 5, and 6 from `Configuration For CI job`; don't do Step 4, 7, 8 or 9  
 Step 3) Click `Git Publisher`, then tick `Push Only If Build Succeeds`, and `Merge Results`  
 Step 4) Click `Apply`, then `Save` -> We will come back to `Post-build Actions` later  
 ## Configuration for CDE Job
-- This job will deploy the newly-merged code into the EC2 instances
+- This job will deploy the newly-merged code into the EC2 instances  
 Step 1) Make another job for `Taking the code from the GitHub repo and deploys it in an EC2 instance`  
 Step 2) Repeat steps 1, 2, 3, and 5 from `Configuration For CI job`; don't do Step 4, 7, 8 or 9 
 Step 3) In `Branch Specifier`, enter `*/main`  
