@@ -56,6 +56,7 @@ sudo chmod +x provision.sh
 EOF
 ssh -A -o "StrictHostKeyChecking=no" ubuntu@ec2-176-34-155-161.eu-west-1.compute.amazonaws.com  << EOF
 #sudo dpkg --configure -a
+killall node
 rm -rf sre_jenkins_working_app
 git clone https://github.com/am93596/sre_jenkins_working_app.git
 cd sre_jenkins_working_app/environment/app
@@ -65,8 +66,7 @@ export DB_HOST=34.254.188.238:27017/posts/
 cd ~/sre_jenkins_working_app/app
 npm install
 node seeds/seed.js
-npm start
-# nohup node app.js > /dev/null 2>&1 &
+nohup node app.js > /dev/null 2>&1 &
 EOF
 ```  
 Step 6) Click `Apply`, then `Save`
@@ -84,4 +84,3 @@ Step 3) Click `Send me everything`
 Step 4) Click `Add webhook`
 
 Now make a new dev branch in your local repo, make a change, and push it -> then give Jenkins some time, before navigating to the IP address for the app EC2 instance, then IP/posts. Both should appear.
-
