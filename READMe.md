@@ -1,11 +1,11 @@
 # Continuous Integration and Continuous Delivery/Deployment (CICD) Pipeline
-![image](https://user-images.githubusercontent.com/88166874/132583482-6d8060cb-54ac-43d7-8d7c-0ba62a9549a9.png)
+![image](https://user-images.githubusercontent.com/88166874/132583482-6d8060cb-54ac-43d7-8d7c-0ba62a9549a9.png)  
 ## Prerequisites
 - GitHub repo with all of the required directories for the app (clone this repo, then make a new one, connect to it through ssh, and push the code to the new repo) -> [see this README](https://github.com/am93596/SRE_Github_SSH/blob/main/README.md)  
 - Jenkins server  
 - AWS account with EC2 instances for the app and db -> [see this repo](https://github.com/am93596/SRE_intro_cloud_computing_two_tier_arch)  
 ## Jenkins
-![image](https://user-images.githubusercontent.com/88166874/132583118-1a674c3b-0a95-420f-96bd-ea7c3a95ab29.png)
+![image](https://user-images.githubusercontent.com/88166874/132583118-1a674c3b-0a95-420f-96bd-ea7c3a95ab29.png)  
 ### Setting Up A New Job
 - Click `New Item`
 - Give the item a name, then click `Freestyle project`
@@ -76,9 +76,10 @@ Step 2) Enter the name of the second job we created, and select `Trigger only if
 Step 3) In your second job, click `Configure`, then `Add post-build action` -> `Build other projects`  
 Step 4) Enter the name of the third job we created, and select `Trigger only if build is stable`  
 ### GitHub Webhook
+![webhook_img](https://user-images.githubusercontent.com/88166874/132826939-2a884dfe-1fdc-48b3-b364-ed94543fd795.jpg)  
 Step 1) In your GitHub repo, click `Settings` -> `Webhooks` -> `Create webhook`, and type in your password if prompted  
 Step 2) `Payload URL`: `http://18.170.212.241:8080/github-webhook/` - REPLACE `18.170.212.241` WITH THE CURRENT JENKINS IP  
 Step 3) Click `Send me everything`  
 Step 4) Click `Add webhook`  
 
-Now make a new dev branch in your local repo, make a change, and push it -> then give Jenkins some time, before navigating to the IP address for the app EC2 instance, then IP/posts. Both should appear.
+Now make a new dev branch in your local repo, make a change, and push it -> then give Jenkins some time, before navigating to the IP address for the app EC2 instance, then IP/posts - both should appear.
